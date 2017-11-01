@@ -83,6 +83,7 @@
         });
         markers.push(marker);
         map.panTo(new google.maps.LatLng(json.location.latitude, json.location.longitude));
+        $('#location_raw_map_data_google_map_field_search').val(json.formatted_address);
       }
     }
   }
