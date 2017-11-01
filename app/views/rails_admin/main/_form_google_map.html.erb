@@ -14,6 +14,14 @@
   var markers;
 
   function initMap() {
+
+    document.getElementById("<%= field.dom_name + '_search' %>").addEventListener('focus', function() {
+      var cont = document.getElementsByClassName('pac-container');
+      for (var i = 0; i < cont.length; i++) {
+        cont[i].style.zIndex = 999999999;
+      }
+    });
+
     markers = [];
     var myOptions = {
       zoom: <%= field.default_zoom_level %>,
@@ -83,7 +91,7 @@
         });
         markers.push(marker);
         map.panTo(new google.maps.LatLng(json.location.latitude, json.location.longitude));
-        $('#location_raw_map_data_google_map_field_search').val(json.formatted_address);
+        document.getElementById("<%= field.dom_name + '_search' %>").value = json.formatted_address;
       }
     }
   }
